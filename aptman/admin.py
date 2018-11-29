@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Apartment, Tenant, PastPayment
+
+admin.site.register(Apartment)
+admin.site.register(Tenant)
+admin.site.register(PastPayment)
