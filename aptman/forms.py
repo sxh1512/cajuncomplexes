@@ -9,7 +9,8 @@ class ApartmentAdditionForm(forms.ModelForm):
             'apt_complex',
             'monthly_rent',
             'vacant',
-            'tenant_id'
+            'tenant_id',
+            'maintenance_needed'
         ]
 
 class TenantAdditionForm(forms.ModelForm):

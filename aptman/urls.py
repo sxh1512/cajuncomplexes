@@ -6,5 +6,7 @@ app_name = 'aptman'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:apt_id>/', views.details, name='details'),
-    path('add/', views.add_apartment, name='add')
+    path('add-apartment/', views.add_apartment, name='addapt'),
+    path('add-tenant/', views.add_tenant, name='addtenant'),
+    path('edit-apartment/<int:apt_id>/', views.edit_apt, name='editapt')
 ]

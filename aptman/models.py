@@ -7,7 +7,7 @@ class Apartment(models.Model):
     apt_complex = models.CharField(max_length=200)
     monthly_rent = models.DecimalField(decimal_places=2, max_digits=25)
     vacant = models.BooleanField(default=True)
-    tenant_id = models.ForeignKey('Tenant', on_delete=models.CASCADE, null=True, blank=True)
+    tenant_id = models.ForeignKey('Tenant', on_delete=models.CASCADE, null=True)
     maintenance_needed = models.BooleanField(default=False)
 
     def get_tenant(self):
@@ -29,13 +29,13 @@ class Tenant(models.Model):
     tenant_id = models.IntegerField(primary_key=True)
     apt_id = models.ForeignKey(Apartment, on_delete=models.CASCADE, null=True, blank=True)
     tenant_name = models.CharField(max_length=200)
-    last_payment = models.DateField()
-    next_payment = models.DateField()
+    last_payment = models.CharField(max_length=10)
+    next_payment = models.CharField(max_length=10)
     expected_payment = models.DecimalField(decimal_places=2, max_digits=25)
-    missed_payments = models.IntegerField()
+    missed_payments = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.tenant_name
+        return str(self.tenant_id) + ": " + self.tenant_name
 
 
 class PastPayment(models.Model):
