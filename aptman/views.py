@@ -49,3 +49,10 @@ def edit_apt(request, apt_id):
         form = ApartmentAdditionForm(instance=apt)
     
     return render(request, 'aptman/add.html', {'form': form})
+
+def view_vacant(request):
+    vacancies = Apartment.objects.filter(vacant = True).order_by('apt_complex', '-monthly_rent')
+    context = {'vacancies': vacancies}
+    return render(request, 'aptman/vacant.html', context)
+
+    

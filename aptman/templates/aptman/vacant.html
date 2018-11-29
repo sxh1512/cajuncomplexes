@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'aptman/style.css' %}">
+
+<ul>
+    {% for apt in vacancies %}
+        {% with apt.apt_id|stringformat:"s" as apt_id %}
+            {% with apt.monthly_rent|stringformat:"s" as monthly_rent %}
+                <li> <a href="{% url 'aptman:details' apt.apt_id %}"> {{ apt.apt_complex |add:": Apartment "|add:apt_id|add:" Cost: $"|add:monthly_rent }} </a> </li>
+            {% endwith %}
+        {% endwith %}
+    {% endfor %}
+</ul>
