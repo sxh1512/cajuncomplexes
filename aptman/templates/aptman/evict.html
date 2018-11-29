@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'aptman/style.css' %}">
+
+{% if tenants|length > 0 %}
+    <h3>Tenants To Be Evicted: </h3>
+
+    <ul>
+        {% for tenant in tenants %}
+            {% with tenant.tenant_id|stringformat:"s" as tenant_id %}
+                <li> {{ tenant_id|add:": "|add:tenant.tenant_name }} </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <h3> No tenants are to be evicted </h3>
+
+{% endif %}

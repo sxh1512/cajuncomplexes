@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'aptman/style.css' %}">
+
+{% if tenants|length > 0 %}
+    <h3>Tenants Flagged as Late: </h3>
+
+    <ul>
+        {% for tenant in tenants %}
+            {% with tenant.tenant_id|stringformat:"s" as tenant_id %}
+                <li> {{ tenant_id|add:": "|add:tenant.tenant_name }} </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <h3> No tenants reported as being late </h3>
+
+{% endif %}

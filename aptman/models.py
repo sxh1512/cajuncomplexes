@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 from django.db import models
 
 # Create your models here.
@@ -34,13 +35,19 @@ class Tenant(models.Model):
     expected_payment = models.DecimalField(decimal_places=2, max_digits=25)
     missed_payments = models.IntegerField(default=0)
 
+    def last_payment_as_dt(self):
+        return dt.strptime(self.last_payment, "%m/%d/%Y")
+
+    def next_payment_as_dt(self):
+        return dt.strptime(self.next_payment, "%m/%d/%Y")
+
     def __str__(self):
         return str(self.tenant_id) + ": " + self.tenant_name
 
 
 class PastPayment(models.Model):
     tenant_id = models.ForeignKey(Tenant, on_delete=models.CASCADE)
-    payment_date = models.DateField()
+    payment_date = models.CharField(max_length=10)
     payment_amount = models.DecimalField(decimal_places=2, max_digits=25)
 
 

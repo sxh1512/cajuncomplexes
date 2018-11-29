@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'aptman/style.css' %}">
+
+<ul>
+    {% for tenant in tenants %}
+        {% with tenant.tenant_id|stringformat:"s" as tenant_id %}
+            <li> <a href="{% url 'aptman:edit-tenant' tenant.tenant_id %}"> {{ tenant_id|add:": "|add:tenant.tenant_name }} </a> </li>
+        {% endwith %}
+    {% endfor %}
+</ul>

@@ -10,5 +10,8 @@
     {% endfor %}
     <li> <a href="{% url 'aptman:addapt' %}"> Add new apartment </a> </li>
     <li> <a href="{% url 'aptman:addtenant' %}"> Add new tenant </a> </li>
+    <li>  <a href="{% url 'aptman:flag-late' %}"> Flag tenants with late payments </a> </li>
+    <li> <a href ="{% url 'aptman:to-evict' %}"> View tenants that are to be evicted </a> </li>
+    <li> <a href ="{% url 'aptman:view-tenants' %}"> View tenants </a> </li>
     <li> <a href ="{% url 'aptman:vacant-apartments' %}"> View vacant apartments </a> </li>
 </ul>
