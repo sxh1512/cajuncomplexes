@@ -5,7 +5,8 @@
 <ul>
     {% for apt in apartment_list %}
         {% with apt.apt_id|stringformat:"s" as apt_id %}
-            <li> <a href="{% url 'aptman:details' apt.apt_id %}"> {{ apt.apt_complex |add:":"|add:apt_id }} </a> </li>
+            <li> <a href="{% url 'aptman:details' apt.apt_id %}"> {{ apt.apt_complex |add:": Apartment "|add:apt_id }} </a> </li>
         {% endwith %}
     {% endfor %}
+    <li> <a href="{% url 'aptman:add' %}"> Add new apartment </a> </li>
 </ul>

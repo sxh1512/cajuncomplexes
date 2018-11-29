@@ -10,8 +10,19 @@ class Apartment(models.Model):
     tenant_id = models.ForeignKey('Tenant', on_delete=models.CASCADE, null=True, blank=True)
     maintenance_needed = models.BooleanField(default=False)
 
+    def get_tenant(self):
+        if self.tenant_id:
+            return "\nTenant ID: " + str(self.tenant_id)
+        else:
+            return ""
+
+    def yes_no(self, val):
+        ret = "Yes" if val else "No"
+        return ret
+
     def __str__(self):
-        return self.apt_complex + ": " + str(self.apt_id)
+        val = "Complex: " + self.apt_complex + "\nApartment ID: " + str(self.apt_id) + "\nRent: $" + str(self.monthly_rent) + "\nVacant: " + self.yes_no(self.vacant) + self.get_tenant() + "\nNeeds Maintenance: " + self.yes_no(self.maintenance_needed)
+        return val 
 
 
 class Tenant(models.Model):

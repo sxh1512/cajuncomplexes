@@ -5,5 +5,6 @@ from . import views
 app_name = 'aptman'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:apt_id>/', views.details, name='details')
+    path('<int:apt_id>/', views.details, name='details'),
+    path('add/', views.add_apartment, name='add')
 ]
