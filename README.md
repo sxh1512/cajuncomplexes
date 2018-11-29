@@ -1,4 +1,4 @@
-Running instructions:
+# Running instructions:
     Ensure that you have Python with the PATH properly set and the Django library installed and execute the following in the terminal of your choice:
         python manage.py serverrun
 
