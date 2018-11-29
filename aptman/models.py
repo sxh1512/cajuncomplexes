@@ -13,6 +13,7 @@ class Apartment(models.Model):
     def __str__(self):
         return self.apt_complex + ": " + str(self.apt_id)
 
+
 class Tenant(models.Model):
     tenant_id = models.IntegerField(primary_key=True)
     apt_id = models.ForeignKey(Apartment, on_delete=models.CASCADE, null=True, blank=True)

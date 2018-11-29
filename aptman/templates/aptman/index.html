@@ -1,0 +1,7 @@
+<ul>
+    {% for apt in apartment_list %}
+        {% with apt.apt_id|stringformat:"s" as apt_id %}
+            <li> <a href="/aptman/{{ apt.apt_id }}/"> {{ apt.apt_complex |add:":"|add:apt_id }} </a> </li>
+        {% endwith %}
+    {% endfor %}
+</ul>
